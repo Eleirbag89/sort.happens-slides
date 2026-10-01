@@ -1,0 +1,114 @@
+<footer id="title-footer" class="white_bg">
+    <p>Gabriele Grillo - DevFest Catania 2026</p>
+</footer>
+<script src="assets/js/reveal.js-plugins/menu/menu.js"></script>
+<link rel="stylesheet" href="assets/js/reveal.js-plugins/customcontrols/style.css">
+<script src="assets/js/reveal.js-plugins/customcontrols/plugin.js"></script>
+<script src="assets/js/reveal.js-plugins/countdown/countdown.js"></script>
+<script>
+  function print_pdf() {
+    console.log("Window?");
+    var printWindow = window.open('?print-pdf', '');
+    printWindow.onafterprint = function() {
+          printWindow.close(); // Chiudi la finestra
+    };
+
+    printWindow.onload = function() {
+      setTimeout(function() {
+        printWindow.print();
+      }, 1000);
+    };
+  };
+
+  function fullscreen_handler(event) {
+    var isFullScreen = document.fullScreen || 
+                   document.mozFullScreen || 
+                   document.webkitIsFullScreen || 
+                   (window.innerHeight == screen.height);
+
+    if (isFullScreen){
+      Reveal.configure({
+        controls: false
+      });
+      var cc = document.getElementById('customcontrols');
+      if (cc) {
+        cc.style.visibility = 'hidden';
+      }
+      var smb = document.getElementsByClassName('slide-menu-button');
+      if (smb && smb.length > 0) {
+        document.getElementsByClassName('slide-menu-button')[0].style.visibility = 'hidden';
+      }
+    } else {
+      Reveal.configure({
+        controls: true
+      });
+      var cc = document.getElementById('customcontrols');
+      if (cc) {
+        cc.style.visibility = 'visible';
+      }
+      var smb = document.getElementsByClassName('slide-menu-button');
+      if (smb && smb.length > 0) {
+        document.getElementsByClassName('slide-menu-button')[0].style.visibility = 'visible';
+      }
+    }
+  }
+
+  function enable_fullscreen() {
+    var element = document.documentElement;
+    
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+    if (requestMethod) { // Native full screen.
+      requestMethod.call(element);
+    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+      var wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+        wscript.SendKeys("{F11}");
+      }
+    }
+
+  };
+
+  window.addEventListener("resize", fullscreen_handler);
+
+  Reveal.configure({
+    menu: {
+      side: 'left',
+      openButton: true
+    },
+    pdfMaxPagesPerSlide: 1,
+    customcontrols: {
+      controls: [
+        {
+          id: 'toggle-overview',
+          title: 'Toggle overview (O)',
+          icon: '<i class="fa fa-th"></i>',
+          action: 'Reveal.toggleOverview();'
+        },
+        {
+          id: 'print-version',
+          title: 'Print version (P)',
+          icon: '<i class="fa fa-print"></i>',
+          action: 'print_pdf();'
+        },
+        {
+          id: 'enable-fullscreen',
+          title: 'Full screen (F11)',
+          icon: '<i class="fas fa-expand-arrows-alt"></i>',
+          action: 'enable_fullscreen();'
+        }
+      ]
+    },
+    keyboard: {
+      '80': ()=> {print_pdf()}
+    }
+  })
+  
+
+  const params = new URLSearchParams(window.location.search);
+  if (! params.has("print-pdf")) {
+    Reveal.registerPlugin(RevealMenu)
+    Reveal.registerPlugin(RevealCustomControls)
+  }
+</script>

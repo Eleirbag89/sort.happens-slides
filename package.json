@@ -1,0 +1,19 @@
+{
+  "name": "asciidoc-slides",
+  "version": "1.0.0",
+  "description": "= Asciidoctor reveal.js template \r :author: @martsec",
+  "main": "reveal.js",
+  "scripts": {
+    "prebuild": "node scripts/sync-reveal.js",
+    "build": "npx npx asciidoctor-revealjs -r asciidoctor-kroki presentation.adoc",
+    "dev": "node scripts/dev.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@asciidoctor/reveal.js": "^5.2.0",
+    "asciidoctor-kroki": "^0.18.1",
+    "reveal.js": "^6.0.2"
+  }
+}

@@ -1,0 +1,7 @@
+asciidoctor-revealjs*
+.sync/*
+node_modules
+presentation.html
+assets/images/rma-component-diagram-*.svg
+# reveal.js viene copiato da node_modules durante la build (scripts/sync-reveal.js)
+assets/js/reveal.js/
