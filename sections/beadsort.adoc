@@ -1,0 +1,52 @@
+[.white_bg]
+== Bead Sort
+
+[.fragment]
+++++
+<div class="beads" data-bead-rows="6" data-bead-counts="3,4,6,1,2">
+<span class="fragment" data-bead-step="1"></span>
+<span class="fragment" data-bead-step="2"></span>
+<span class="fragment" data-bead-step="3"></span>
+<span class="fragment" data-bead-step="4"></span>
+</div>
+++++
+
+[.fragment]
+Non confrontiamo i numeri
+
+[.fragment.big]
+Usiamo la gravità
+
+
+[.white_bg]
+== Quanto costa?
+
+[%step]
+* Spaziale: *O(r · m)* — la griglia è *r × m*, con *r · m = n*: *r* numero di elementi, *m* numero di palline massimo di un numero
+* Temporale: *O(n)* — una passata per trasferire le palline*, una per contare
+
+[.fragment.big]
+O(n) < Ω(n log n)
+
+[.fragment]
+Perché? Non abbiamo mai confrontato due elementi.
+
+[.fragment.small]
+*Funziona solo con interi positivi, e il costo efettivo dipende dalle implementazioni e potrebbe essere più lento di altri algoritmi
+
+[.white_bg]
+== legge dell'universo
+
+[.big]
+Ω(n log n)
+
+Vale **solo** per i *comparison sort*.
+
+[quote]
+____
+Cambiare modello → cambiare possibilità
+____
+
+[.notes]
+NOTE: citare velocemente Counting Sort / Radix Sort (sfruttano proprietà dei dati), senza aprirci altri capitoli.
+

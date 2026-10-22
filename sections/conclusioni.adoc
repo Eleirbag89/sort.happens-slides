@@ -1,0 +1,84 @@
+[.columns.is-vcentered%auto-animate]
+== !
+
+[.column.is-two-thirds%auto-animate]
+--
+* Se è stupido ma funziona... 
+** non è detto non sia stupido!
+* Le domande giuste
+** È corretto in tutti i casi previsti?
+** È efficiente in base al modello dati atteso?
+** È mantenibile sul lungo periodo?
+** È adeguato per il problema da risolvere?
+--
+
+[.column]
+--
+image::stupid.jpg[size=contain]
+--
+
+[.notes]
+NOTE: Queste sono quattro domande diverse. Un programma può produrre il risultato atteso, ma essere lento, difficile da modificare o inadatto al problema. Non confondere la correttezza con la qualità complessiva della soluzione.
+
+[.white_bg]
+== E l'AI?
+
+[quote, Qualunque programmatore]
+____
+"Lo ha scritto {CODING AGENT DEL MOMENTO}. Funziona."
+____
+
+[.fragment]
+[.big]
+...e quindi?
+
+== !
+La domanda non è se l'AI sia capace di scrivere codice
+
+[.fragment]
+Ma se siamo ancora capaci di valutarlo
+
+[.white_bg]
+== Take away
+
+[.bigger ]
+Il codice che funziona
+
+[.fragment.big]
+non 
+
+[.bigger]
+è necessariamente il codice giusto.
+
+'''
+
+[.bigger]
+Codice che sembra assurdo 
+
+[.fragment.big]
+non
+
+[.bigger]
+è necessariamente codice sbagliato
+
+
+[.white_bg]
+== Sort happens
+
+[.fragment.small]
+Sometimes…
+
+[.columns.is-vcentered%auto-animate]
+== Grazie
+
+[.column.is-two-thirds%auto-animate]
+--
+Domande?
+--
+
+[.column]
+--
+++++
+<video class="inline-video" src="assets/video/sorting_visualized.mp4" autoplay loop muted playsinline width="560" height="472"></video>
+++++
+--

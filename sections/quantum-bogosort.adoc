@@ -1,0 +1,16 @@
+[.cover, background-video="quantum_bogo_sort.mp4", background-video-loop=loop, background-video-muted=muted]
+== !
+
+[.white_bg]
+== Quantum BogoSort
+
+_Se non è ordinato, distruggi l'universo_ 
+
+[.fragment]
+Secondo l'interpretazione a molti mondi, in uno degli universi sopravvissuti...
+
+[.fragment.big]
+...l'array è ordinato
+
+[.fragment.big]
+Ω(1) 

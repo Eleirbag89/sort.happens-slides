@@ -3,5 +3,10 @@ asciidoctor-revealjs*
 node_modules
 presentation.html
 assets/images/rma-component-diagram-*.svg
+# SVG dei diagrammi kroki: rigenerati dalla build (kroki-fetch-diagram)
+assets/images/diag-*.svg
+assets/images/tree-*.svg
 # reveal.js viene copiato da node_modules durante la build (scripts/sync-reveal.js)
 assets/js/reveal.js/
+# metadata locale Freebuff (project-id), non va nel repo
+.freebuff/

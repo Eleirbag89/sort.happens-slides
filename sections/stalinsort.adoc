@@ -1,0 +1,79 @@
+[.cover]
+== !
+image::stalin-diary.jpg[background]
+
+[transition="fade-in none-out", .white_bg]
+== Stalin Sort
+
+[.fragment]
+_Se non sei ordinato, in Siberia!_
+
+[.fragment]
+----
+[1, 3, 2, 7, 4]
+ ↑
+👍
+----
+
+[transition=none, .white_bg]
+== Stalin Sort
+
+_Se non sei ordinato, in Siberia!_
+
+----
+[1, 3, 2, 7, 4]
+    ↑
+   👍
+----
+
+[.white_bg]
+[transition=none]
+== Stalin Sort
+
+_Se non sei ordinato, in Siberia!_
+
+----
+[1, 3, 2, 7, 4]
+       ↑
+      💀
+----
+
+[.white_bg]
+[transition=none]
+== Stalin Sort
+
+_Se non sei ordinato, in Siberia!_
+
+----
+[1, 3, 7, 4]
+       ↑
+      👍
+----
+
+[.white_bg]
+[transition=none]
+== Stalin Sort
+
+_Se non sei ordinato, in Siberia!_
+
+----
+[1, 3, 7, 4]
+          ↑
+         💀
+----
+
+[.white_bg]
+[transition=none]
+== Stalin Sort
+
+[.big]
+[ 1, 3, 7 ]
+
+[.fragment]
+Abbiamo ordinato l'array?
+
+[.fragment]
+Tecnicamente… abbiamo ottenuto un array ordinato.
+
+[.fragment.big]
+Ω(n)

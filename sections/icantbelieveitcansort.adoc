@@ -1,0 +1,128 @@
+
+[.white_bg]
+== Secondo voi funziona?
+
+
+[source,python]
+----
+for i = 1 to n:
+    for j = 1 to n:
+        if A[i] < A[j]:
+            swap A[i] and A[j]
+----
+
+[.white_bg]
+== i=1
+[.fragment]
+----
+[3 1 4 2] 3 < 1? 🟰
+ ↑ ↑
+ i j
+----
+
+[.fragment]
+----
+[3 1 4 2] 3 < 4? 🔄
+ ↑   ↑
+ i   j
+----
+
+[.fragment]
+----
+[4 1 3 2] 4 < 2? 🟰
+ ↑     ↑
+ i     j
+----
+
+== i=2
+[.fragment]
+----
+[4 1 3 2] 4 < 1? 🔄
+ ↑ ↑ 
+ j i
+----
+[.fragment]
+----
+[1 4 3 2] 4 < 3? 🟰
+   ↑ ↑
+   i j
+----
+[.fragment]
+----
+[1 4 3 2] 4 < 2? 🟰
+   ↑   ↑
+   i   j
+----
+
+== i=3
+[.fragment]
+----
+[1 4 3 2] 3 < 1? 🟰
+ ↑   ↑
+ j   i
+----
+
+[.fragment]
+----
+[1 4 3 2] 3 < 4? 🔄
+   ↑ ↑
+   j i
+----
+
+[.fragment]
+----
+[1 3 4 2] 4 < 2? 🟰
+     ↑ ↑
+     i j
+----
+
+== i=4
+
+[.fragment]
+----
+[1 3 4 2] 2 < 1 🟰
+ ↑     ↑
+ j     i
+----
+
+[.fragment]
+----
+[1 3 4 2] 2 < 3 🔄
+   ↑   ↑
+   j   i
+----
+
+[.fragment]
+----
+[1 2 4 3] 3 < 4 🔄
+     ↑ ↑
+     j i
+----
+[.fragment]
+----
+[1 2 3 4] 🤯
+----
+
+[.cover]
+== !
+image::i_cant_believe_it_can_sort.webp[background]
+
+[.white_bg]
+== I Can't Believe It Can Sort
+
+_Il prof Stanley P. Y. Fung lo ha creato introducendo errori nel bubblesort_
+
+== !
+[quote,Stanley P. Y. Fung]
+____
+Non c'è nulla di buono in questo algoritmo. È lento Θ(n²) nel caso peggiore, medio e migliore. 
+
+Confronta inutilmente tutte le coppie di posizioni, due volte e la sua correttezza non è del tutto ovvia. Non è stabile, non può ordinare input che arrivano online, e non trae beneficio da input parzialmente ordinati
+
+Il suo unico fascino può essere la sua semplicità, in termini di righe di codice e la "simmetria" dei due cicli.
+____
+
+== !
+[.big]
+...but it sorts! 🎉
+

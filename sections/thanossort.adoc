@@ -1,0 +1,39 @@
+[.cover]
+== !
+image::thanos.webp[background]
+
+[transition="fade-in none-out", .white_bg]
+== Thanos Sort
+
+_Se non è ordinato eliminane metà 🫰_ 
+
+----
+[8 2 5 1 9 3 7 4]  ❌
+----
+
+[transition="none-in none-out", .white_bg]
+== Thanos Sort
+
+_Se non è ordinato eliminane metà 🫰_ 
+
+----
+[8 2 5 1] ❌
+----
+
+[transition="none-in", .white_bg]
+== Thanos Sort
+
+_Se non è ordinato eliminane metà 🫰_ 
+
+----
+[2 5] ✔️
+----
+
+[.fragment]
+[quote]
+____
+Ω(n log n) Perfectly balanced, as all things should be
+____
+
+[.fragment]
+Quando un algoritmo risolve davvero il problema?

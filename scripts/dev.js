@@ -140,7 +140,34 @@ const server = http.createServer((req, res) => {
 		res.end(html);
 		return;
 	}
-	res.writeHead(200, { ...headers, 'Content-Length': fs.statSync(file).size });
+	// Supporto HTTP Range: necessario per il seek dei video (es. il loop).
+	const size = fs.statSync(file).size;
+	const range = req.headers.range;
+	const m = range && /^bytes=(\d*)-(\d*)$/.exec(range.trim());
+	if (m) {
+		let start = m[1] === '' ? null : parseInt(m[1], 10);
+		let end = m[2] === '' ? null : parseInt(m[2], 10);
+		if (start === null) {
+			// suffix range: gli ultimi N byte
+			start = Math.max(0, size - (end || 0));
+			end = size - 1;
+		} else if (end === null || end >= size) {
+			end = size - 1;
+		}
+		if (start > end || start >= size) {
+			res.writeHead(416, { 'Content-Range': `bytes */${size}` }).end();
+			return;
+		}
+		res.writeHead(206, {
+			...headers,
+			'Content-Range': `bytes ${start}-${end}/${size}`,
+			'Accept-Ranges': 'bytes',
+			'Content-Length': end - start + 1,
+		});
+		fs.createReadStream(file, { start, end }).pipe(res);
+		return;
+	}
+	res.writeHead(200, { ...headers, 'Accept-Ranges': 'bytes', 'Content-Length': size });
 	fs.createReadStream(file).pipe(res);
 });
 

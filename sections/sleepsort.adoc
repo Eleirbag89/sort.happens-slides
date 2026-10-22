@@ -1,0 +1,34 @@
+[.cover]
+== !
+image::sleep_sort.webp[background]
+
+[.white_bg]
+== Sleep Sort
+
+[.fragment]
+E se fosse il tempo a ordinare?
+
+
+[.fragment]
+[source,js]
+----
+function sleepSort(arr) {
+  arr.forEach(n => {
+    setTimeout(() => {
+      console.log(n);
+    }, n * 100);
+  });
+}
+
+sleepSort([4, 2, 7, 1, 3]);
+----
+
+[.fragment]
+I numeri *si svegliano* nell'ordine corretto.
+
+[.notes]
+NOTE: concorrenza, timing, assunzioni hardware, perché non è un vero sorting generale.
+
+[.fragment]
+Abbiamo trasformato un problema algoritmico in un problema di scheduling.
+

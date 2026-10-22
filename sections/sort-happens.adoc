@@ -1,0 +1,37 @@
+[.video_bg, background-video="merlino.web.mp4", background-video-loop=loop, background-video-muted=muted]
+== Quanto è difficile mettere in ordine delle cose?
+
+[.subtitle]
+Non chiedetelo alla mia compagna 🤫
+
+[.array-demo]
+----
+[ 7, 2, 9, 1, 5, 3 ]
+↓
+[ 1, 2, 3, 5, 7, 9 ]
+----
+
+[.notes]
+--
+Piccola domanda al pubblico: come lo fareste?
+--
+
+include::bubblesort.adoc[]
+
+include::ordinamento-confronto.adoc[]
+
+include::beadsort.adoc[]
+
+include::bogosort.adoc[]
+
+include::sleepsort.adoc[]
+
+include::stalinsort.adoc[]
+
+include::thanossort.adoc[]
+
+include::quantum-bogosort.adoc[]
+
+include::icantbelieveitcansort.adoc[]
+
+include::conclusioni.adoc[]

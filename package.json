@@ -1,7 +1,7 @@
 {
-  "name": "asciidoc-slides",
+  "name": "sort-happens-slide",
   "version": "1.0.0",
-  "description": "= Asciidoctor reveal.js template \r :author: @martsec",
+  "description": "Slides for the Sort Happens talk during the 2026 DevFest Catania",
   "main": "reveal.js",
   "scripts": {
     "prebuild": "node scripts/sync-reveal.js",

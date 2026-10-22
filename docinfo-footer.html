@@ -4,6 +4,8 @@
 <script src="assets/js/reveal.js-plugins/menu/menu.js"></script>
 <link rel="stylesheet" href="assets/js/reveal.js-plugins/customcontrols/style.css">
 <script src="assets/js/reveal.js-plugins/customcontrols/plugin.js"></script>
+<link rel="stylesheet" href="assets/js/reveal.js-plugins/stalin-sort/stalin-sort.css">
+<script src="assets/js/reveal.js-plugins/stalin-sort/stalin-sort.js"></script>
 <script src="assets/js/reveal.js-plugins/countdown/countdown.js"></script>
 <script>
   function print_pdf() {
@@ -106,9 +108,259 @@
   })
   
 
+  // Nella speaker view le slide sono caricate in due iframe con "?receiver" nella
+  // query: i plugin disegnano la loro UI dentro l'iframe, quindi il menu (e i
+  // controlli) comparivano sopra il riquadro "Current/Upcoming". La finestra
+  // speaker è about:blank, non la puoi raggiungere dal CSS: va escluso a monte.
+  const isReceiver = /receiver/i.test(window.location.search);
+
   const params = new URLSearchParams(window.location.search);
-  if (! params.has("print-pdf")) {
+  if (! params.has("print-pdf") && ! isReceiver) {
     Reveal.registerPlugin(RevealMenu)
     Reveal.registerPlugin(RevealCustomControls)
   }
+
+  // I video di sfondo non partono sempre al primo cambio slide: se il file
+  // non è ancora pronto play() finisce con AbortError e il video resta fermo
+  // sul primo frame. Si riprova quando i dati sono disponibili.
+  function tryPlay(video) {
+    if (!video.paused || video.readyState < 2) return;
+    var attempt = video.play();
+    if (attempt && typeof attempt.catch == 'function') attempt.catch(function() {});
+  }
+
+  function playInlineVideos(slide) {
+    if (!slide) return;
+    var videos = slide.querySelectorAll('video.inline-video');
+    for (var i = 0; i < videos.length; i++) {
+      tryPlay(videos[i]);
+      videos[i].addEventListener('canplay', function onReady() {
+        this.removeEventListener('canplay', onReady);
+        tryPlay(this);
+      });
+    }
+  }
+
+  function playBackgroundVideo() {
+    var slide = Reveal.getCurrentSlide();
+    playInlineVideos(slide);
+    var bg = slide && (slide.slideBackgroundElement || Reveal.getSlideBackground(slide));
+    var video = bg && bg.querySelector('video');
+    if (!video) {
+      // il background della nuova slide non è ancora sincronizzato
+      setTimeout(playBackgroundVideo, 50);
+      return;
+    }
+    tryPlay(video);
+    // ancora in pausa: il media non è pronto, si riprova più tardi
+    if (video.paused) {
+      video.addEventListener('canplay', function handler() {
+        video.removeEventListener('canplay', handler);
+        tryPlay(video);
+      });
+      setTimeout(function() { tryPlay(video); }, 400);
+    }
+  }
+
+  // ---- Bead Sort: una passata di confronto per fragment -------------------
+  // Lo stato non e' animato nel tempo: si ricostruisce da zero a ogni
+  // click (indietro incluso) contando i fragment gia' visibili.
+  //
+  // Un fragment = una PASSATA dell'algoritmo, non una riga:
+  //   1. sweep  - ogni pallina rotola a destra se nella colonna a destra,
+  //               alla sua stessa altezza, non c'e' nessuna pallina;
+  //   2. settle - la gravita' le fa cadere, riempiendo i buchi.
+  function beadPlace(bead, c, r) {
+    bead.style.setProperty('--c', c);
+    bead.style.setProperty('--r', r);
+  }
+
+  // Le piu' basse si muovono per prime e liberano il posto alle altre:
+  // senza questo ordine una colonna si aprirebbe a zig-zag durante la caduta.
+  function beadFall(beads, rows) {
+    var occupied = {};
+    var i, bead, c, r;
+    for (i = 0; i < beads.length; i++) {
+      bead = beads[i];
+      occupied[bead.dataset.c + ',' + bead.dataset.r] = true;
+    }
+    var order = beads.slice().sort(function (a, b) {
+      return parseInt(b.dataset.r, 10) - parseInt(a.dataset.r, 10);
+    });
+    var moves = 0;
+    for (i = 0; i < order.length; i++) {
+      bead = order[i];
+      c = bead.dataset.c;
+      r = parseInt(bead.dataset.r, 10);
+      if (r + 1 < rows && !occupied[c + ',' + (r + 1)]) {
+        delete occupied[c + ',' + r];
+        occupied[c + ',' + (r + 1)] = true;
+        bead.dataset.r = r + 1;
+        beadPlace(bead, c, r + 1);
+        moves++;
+      }
+    }
+    return moves;
+  }
+
+  // Gravita' fino a quando non cade piu' nulla. Ordinando dal basso, una
+  // sola chiamata di beadFall basta, ma il ciclo non costa nulla e rende
+  // beadFall immune da futuri riordini.
+  function beadSettle(beads, rows) {
+    while (beadFall(beads, rows)) { /* finche' qualcosa cade */ }
+  }
+
+  // Il cuore dell'algoritmo: confronto fra colonne adiacenti, da sinistra a
+  // destra. Una pallina passa a destra solo se la cella di arrivo (stessa
+  // riga, colonna successiva) e' vuota: e' il "se ne va' la piu' alta".
+  function beadSweep(beads, cols) {
+    var occupied = {}, i, bead, c, r, moved = 0;
+    for (i = 0; i < beads.length; i++) {
+      bead = beads[i];
+      occupied[bead.dataset.c + ',' + bead.dataset.r] = true;
+    }
+    for (c = 0; c < cols - 1; c++) {
+      var col = beads.filter(function (b) {
+        return parseInt(b.dataset.c, 10) === c;
+      }).sort(function (a, b) {
+        return parseInt(a.dataset.r, 10) - parseInt(b.dataset.r, 10);
+      });
+      for (i = 0; i < col.length; i++) {
+        bead = col[i];
+        r = parseInt(bead.dataset.r, 10);
+        if (!occupied[(c + 1) + ',' + r]) {
+          delete occupied[c + ',' + r];
+          occupied[(c + 1) + ',' + r] = true;
+          bead.dataset.c = c + 1;
+          beadPlace(bead, c + 1, r);
+          moved++;
+        }
+      }
+    }
+    return moved;
+  }
+
+  // Una passata completa: confronto, poi gravita'.
+  function beadStep(beads, rows, cols) {
+    var moved = beadSweep(beads, cols);
+    beadSettle(beads, rows);
+    return moved;
+  }
+
+  // L'etichetta sotto ogni colonna vale il conteggio CORRENTE di quella colonna:
+  // quando le palline passano a destra il numero le segue. Senza questo le
+  // etichette continuerebbero a mostrare l'input accanto a un output diverso.
+  function beadLabels(state) {
+    if (!state.labels) return;
+    var counts = [], i;
+    for (i = 0; i < state.cols; i++) counts.push(0);
+    for (i = 0; i < state.beads.length; i++) {
+      counts[parseInt(state.beads[i].dataset.c, 10)]++;
+    }
+    for (i = 0; i < state.labels.length; i++) {
+      state.labels[i].textContent = counts[i];
+    }
+  }
+
+  // Ultimo passo: ruotiamo la griglia di 90 gradi invece di impacchettare.
+  // Le coordinate delle palline non cambiano: e' solo una trasformazione CSS,
+  // quindi il risultato e' reversibile e il riavvolgimento resta esatto.
+  function beadRotate(frame) {
+    if (frame) frame.classList.add('rotated');
+  }
+
+  function beadRender(box) {
+    var state = box.beadState;
+    if (!state) return;
+    var i, bead;
+    if (state.frame) {
+      state.frame.classList.remove('rotated');
+      // Il reset azzera la larghezza inline: va ricalcolata da zero, altrimenti
+      // l'ultima passata (o un riavvolgimento parziale) la lascerebbe stale.
+      state.frame.style.width = 'calc(' + state.cols + ' * var(--cell))';
+      state.frame.style.height = 'calc(' + state.rows + ' * var(--cell))';
+    }
+    for (i = 0; i < state.beads.length; i++) {
+      bead = state.beads[i];
+      bead.dataset.c = bead.dataset.c0;
+      bead.dataset.r = bead.dataset.r0;
+      beadPlace(bead, bead.dataset.c0, bead.dataset.r0);
+    }
+    // Ordine dei fragment: il PRIMO ruota la griglia, gli altri sono le
+    // passate dell'algoritmo. Cosi' confronto e caduta si vedono gia' di
+    // lato: la gravita' tira per il fondo della colonna, che a schermo
+    // e' una delle due direzioni della griglia ruotata.
+    var steps = box.querySelectorAll('.fragment.visible[data-bead-step]').length;
+    for (var s = 1; s <= steps; s++) {
+      if (s === 1) beadRotate(state.frame);
+      else beadStep(state.beads, state.rows, state.cols);
+    }
+    beadLabels(state);
+  }
+
+  function beadRefresh() {
+    var boxes = document.querySelectorAll('.beads[data-bead-counts]');
+    for (var i = 0; i < boxes.length; i++) beadRender(boxes[i]);
+  }
+
+  // L'interfaccia dichiara QUANTE palline per colonna, non le righe occupate:
+  // le palline partono impilate a terra (la gravita' ha gia' agito) e quindi
+  // un buco iniziale e' impossibile per costruzione, non per sorveglianza.
+  function beadInit() {
+    var boxes = document.querySelectorAll('.beads[data-bead-counts]');
+    for (var i = 0; i < boxes.length; i++) {
+      var box = boxes[i];
+      var rows = parseInt(box.getAttribute('data-bead-rows'), 10);
+      var counts = box.getAttribute('data-bead-counts').split(',');
+      var total = box.querySelectorAll('.fragment[data-bead-step]').length;
+      var frame = document.createElement('div');
+      var beads = [];
+      frame.className = 'beadframe';
+      for (var c = 0; c < counts.length; c++) {
+        var k = parseInt(counts[c], 10) || 0;
+        for (var j = rows - k; j < rows; j++) {
+          if (j < 0) continue;
+          var bead = document.createElement('i');
+          bead.className = 'bead';
+          bead.dataset.c = c;
+          bead.dataset.r = j;
+          bead.dataset.c0 = c;
+          bead.dataset.r0 = j;
+          frame.appendChild(bead);
+          beads.push(bead);
+        }
+      }
+      // La griglia e' quadrata: n colonne per n righe. Deve esserlo, o la
+      // rotazione finale cambierebbe le dimensioni del riquadro.
+      frame.style.width = 'calc(' + counts.length + ' * var(--cell))';
+      frame.style.height = 'calc(' + rows + ' * var(--cell))';
+      box.insertBefore(frame, box.firstChild);
+      // I numeri da ordinare, uno sotto ogni colonna. Vivono fuori dalla
+      // stanno dentro il frame perche' devono ruotare con la griglia
+      var labels = document.createElement('div');
+      labels.className = 'beadlabels';
+      for (var q = 0; q < counts.length; q++) {
+        var lab = document.createElement('span');
+        lab.textContent = counts[q];
+        labels.appendChild(lab);
+      }
+      frame.appendChild(labels);
+      box.beadState = {
+        rows: rows,
+        cols: counts.length,
+        total: total,
+        labels: labels.querySelectorAll('span'),
+        beads: beads,
+        frame: frame
+      };
+    }
+    beadRefresh();
+  }
+
+  beadInit();
+  Reveal.on('fragmentshown', beadRefresh);
+  Reveal.on('fragmenthidden', beadRefresh);
+
+  Reveal.on('slidechanged', playBackgroundVideo);
+  window.addEventListener('load', playBackgroundVideo);
 </script>
