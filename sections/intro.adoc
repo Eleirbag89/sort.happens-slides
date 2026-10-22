@@ -4,7 +4,7 @@ image:qr_code.png[background]
 
 [.white_bg]
 == Gabriele Grillo
-image::ggrillo.png[background]
+image::speaker.png[background]
 
 --
 * FullStackDev @ Zupit
