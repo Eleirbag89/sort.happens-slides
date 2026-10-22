@@ -1,5 +1,5 @@
 .reveal-viewport {
-    background-image: url(../images/logo.png);
+    background-image: url(../images/logo.webp);
     background-size: 12%;
     background-repeat: no-repeat;
     background-position: 97% 3%;
@@ -296,4 +296,283 @@ footer:last-of-type#title-footer
 {
 	opacity: 0;
 	transition: opacity 800ms ease-in-out;
+}
+
+/* Utility per lo scheletro del talk: testo grande / piccolo */
+
+.big
+{
+	font-size: 1.8em;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.small
+{
+	font-size: 0.55em;
+	opacity: 0.75;
+}
+
+/* Sottotitolo sotto il titolo di una slide */
+
+.subtitle
+{
+	font-size: 0.8em;
+	font-weight: 400;
+	opacity: 0.75;
+	font-style: italic;
+}
+
+/* Array di esempio: protagonista della slide, centrato e senza box */
+
+.reveal .slides .array-demo
+{
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+
+.reveal .slides .array-demo pre
+{
+	display: inline-block;
+	font-size: 1.7em;
+	line-height: 1.35;
+	background: none;
+	border: none;
+	box-shadow: none;
+	margin: 0;
+	text-align: center;
+	white-space: pre;
+}
+
+/* Diagrammi kroki (alberi di confronto): non devono superare l'altezza
+   della slide né portarsi via il fondo bianco. */
+
+/* Traccia di un passaggio: piu righe, quindi piu compatta di .array-demo
+   e niente box. Ogni riga `⇄` e uno scambio reale. */
+
+/* Slide a immagine di sfondo a schermo intero: il testo di default e
+   scuro (theme bianco) e sparirebbe sull'immagine. Serve chiaro + ombra. */
+
+.reveal .slides section.cover
+{
+	color: #fff;
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.reveal .slides section.cover h1,
+.reveal .slides section.cover h2,
+.reveal .slides section.cover h3
+{
+	color: #fff;
+	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Slide con video di sfondo e testo above (non fullscreen a immagine):
+   il video fa da sfondo ma la slide ha ancora contenuto, quindi serve
+   un velo scuro per far leggere il testo bianco. */
+
+.reveal .slides section.video_bg
+{
+	background-color: rgba(0, 0, 0, 0.45);
+}
+
+.reveal .slides section.video_bg h1,
+.reveal .slides section.video_bg h2,
+.reveal .slides section.video_bg h3,
+.reveal .slides section.video_bg p,
+.reveal .slides section.video_bg .subtitle,
+.reveal .slides section.video_bg pre,
+.reveal .slides section.video_bg code
+{
+	color: #fff;
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+/* L'array dimostrativo ha il box di sfondo del tema: via, o copre il video */
+
+.reveal .slides section.video_bg .array-demo pre
+{
+	background: none;
+	border: none;
+	box-shadow: none;
+	color: #fff;
+}
+
+/* Traccia di un passaggio */
+
+.reveal .slides .array-trace
+{
+	background: none;
+	border: none;
+	box-shadow: none;
+	text-align: center;
+}
+
+.reveal .slides .array-trace pre
+{
+	display: inline-block;
+	font-size: 1.05em;
+	line-height: 1.45;
+	background: none;
+	border: none;
+	box-shadow: none;
+	margin: 0;
+	text-align: left;
+	white-space: pre;
+}
+
+/* Diagrammi kroki */
+
+.reveal .slides .tree
+{
+	display: block;
+	margin: 0 auto;
+	background: none;
+}
+
+.reveal .slides .tree img
+{
+	display: block;
+	margin: 0 auto;
+	max-height: 42vh;
+	max-width: 100%;
+	width: auto;
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+
+/* L'albero di un solo confronto è alto e stretto: va ingrandito
+   rispetto a quello a tre livelli, che è largo. */
+
+.reveal .slides .tree-sm img
+{
+	width: 60%;
+	max-height: 34vh;
+}
+
+/* Video inline dentro una slide (es. animazione del bubblesort): il
+   sorgente e' 280x236, quindi lo si raddoppia via attributi width/height e
+   si toglie il bordo che il tema mette sugli elementi media. */
+
+.reveal .slides .inline-video
+{
+	display: block;
+	margin: 0 auto;
+	background: none;
+	border: none;
+	box-shadow: none;
+	max-height: 46vh;
+}
+
+/* Riga-per-riga nella traccia di un passaggio: ogni riga e uno span con
+   classe fragment, quindi si rivela con i normali fragment di reveal e occupa
+   il suo posto anche quando e' invisibile (nessun salto del layout). */
+
+.reveal .slides .array-trace pre.trace span.fragment
+{
+	transition: opacity .25s ease;
+}
+
+/* Bead Sort: griglia di palline. Ogni click (fragment) fa cadere le palline
+   di una riga, l'ultimo click le allinea in alto. Le posizioni arrivano da JS
+   come --c (colonna) e --r (riga), quindi la transizione fa l'animazione. */
+
+.reveal .slides .beads
+{
+	/* --cell vive sul contenitore, non sulla griglia: cosi' anche le
+	   etichette sotto la calcolano correttamente (una var() non risolta
+	   renderebbe invalida la dichiarazione). */
+	--cell: 58px;
+	--dot: 25px;
+	display: block;
+	margin: 0 auto;
+}
+
+/* Le etichette stanno FUORI dalla griglia che ruota: le colonne non si
+   spostano mai durante le passate, quindi i numeri possono restare fermi
+   sotto senza ruotare. width uguale a quello della griglia = allineate. */
+
+/* Le etichette stanno DENTRO la griglia che ruota: dopo il giro di 90 gradi
+   finiscono a sinistra, una per riga, allineate alla propria riga invece che
+   alla colonna. Il testo viene contro-ruotato, altrimenti si leggerebbe storto:
+   da solo, -90 gradi su ciascuna etichetta cancella il giro del frame. */
+
+.reveal .slides .beads .beadframe .beadlabels
+{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	display: flex;
+	width: 100%;
+	margin: 0;
+}
+
+.reveal .slides .beads .beadframe .beadlabels span
+{
+	flex: 1 1 0;
+	min-width: 0;
+	text-align: center;
+	font-size: 0.62em;
+	font-weight: bold;
+	color: #333333;
+	line-height: 1.4;
+	transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.reveal .slides .beads .beadframe.rotated .beadlabels span
+{
+	transform: rotate(-90deg);
+}
+
+.reveal .slides .beads .fragment
+{
+	display: none;
+}
+
+.reveal .slides .beads .beadframe
+{
+	/* La griglia ruota di 90 gradi: se le celle fossero quadrate strette
+	   l'effetto si vedrebbe appena. */
+	position: relative;
+	/* fallback: la JS imposta width/height in base alle colonne reali */
+	width: calc(5 * var(--cell));
+	height: calc(5 * var(--cell));
+	margin: 0 auto;
+	border: 2px solid #999999;
+	background-color: #f7f7f7;
+	background-image:
+		linear-gradient(to right, rgba(0, 0, 0, 0.10) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(0, 0, 0, 0.10) 1px, transparent 1px);
+	background-size: var(--cell) var(--cell);
+	transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* La matrice ruota di 90 gradi: le colonne diventano file e la colonna con piu'
+   palline finisce in cima, cosi' la scala si legge 1,2,3,4,5,6 dall'alto verso
+   il basso. La griglia e' quadrata, quindi ruotarla non sposta niente nel layout.
+   Il verso conta: con -90 le barre si leggerebbero decrescenti (6,5,4,3,2,1). */
+
+.reveal .slides .beads .beadframe.rotated
+{
+	transform: rotate(90deg);
+}
+
+.reveal .slides .beads .bead
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: var(--dot);
+	height: var(--dot);
+	border-radius: 50%;
+	background-color: #222222;
+	transform:
+		translate(calc((var(--c) + 0.5) * var(--cell)), calc((var(--r) + 0.5) * var(--cell)))
+		translate(-50%, -50%);
+	/* Le palline non cambiano posizione nell'ultimo passo (cambia solo la
+	   rotazione del frame): tempi diversi dal frame eviterebbero una falsa
+	   doppia animazione se i dati dovessero muoversi. */
+	transition: transform 0.30s ease-in;
 }

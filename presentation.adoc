@@ -20,15 +20,11 @@
 //:highlightjs-languages: js
 :highlightjs-theme: https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/atom-one-light.min.css
 // Title
-:title-slide-background-image: title-background.jpg
+:title-slide-background-image: title-background.webp
 :kroki-fetch-diagram: true
 :kroki-default-format: svg
 
 
 include::sections/intro.adoc[]
 
-include::sections/generative-ai.adoc[]
-
-include::sections/clippy_llm.adoc[]
-
-include::sections/outro.adoc[]
+include::sections/sort-happens.adoc[]

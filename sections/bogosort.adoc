@@ -1,0 +1,36 @@
+[.cover, background-video="bogo_sort.mp4", background-video-loop=loop, background-video-muted=muted]
+== !
+
+[.white_bg]
+== BogoSort
+
+[.fragment]
+E se provassimo a caso?
+
+[.fragment]
+[source,python]
+----
+while not sorted(a):
+    shuffle(a)
+----
+
+[.fragment]
+----
+[3 1 4 2]
+   ↓
+[2 4 1 3]
+   ↓
+[4 1 3 2]
+   ↓
+[1 2 3 4]  🎉
+----
+
+[%step]
+* Average: `O(n · n!)`
+* Worst case: `∞`
+
+[.fragment.quote]
+____
+Quanto siete disposti ad aspettare?
+____
+

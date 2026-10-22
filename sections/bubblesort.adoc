@@ -1,0 +1,91 @@
+[.cover]
+== !
+image::obama_bubblesort.webp[background]
+
+[.white_bg]
+== Bubblesort
+
+[source,python]
+----
+for i in range(len(a) - 1):
+    for j in range(len(a) - 1 - i):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1] = a[j + 1], a[j]
+----
+
+[.fragment]
+Prendi due elementi vicini. Se sono nel ordine sbagliato, scambiali.
+
+[.fragment]
+Ripeti tutto
+
+[.fragment]
+Tante
+
+[.fragment]
+Tante
+
+[.fragment]
+Volte
+
+[.white_bg]
+== La prima passata
+
+[.array-trace]
+++++
+<div class="array-trace"><pre class="trace"><span>[ <b>7</b>, <b>2</b>, 9, 1, 5, 3 ]  7 &gt; 2  &#x21C4;</span>
+<span class="fragment">[ 2, <b>7</b>, <b>9</b>, 1, 5, 3 ]  7 &gt; 9  =</span>
+<span class="fragment">[ 2, 7, <b>9</b>, <b>1</b>, 5, 3 ]  9 &gt; 1  &#x21C4;</span>
+<span class="fragment">[ 2, 7, 1, <b>9</b>, <b>5</b>, 3 ]  9 &gt; 5  &#x21C4;</span>
+<span class="fragment">[ 2, 7, 1, 5, <b>9</b>, <b>3</b> ]  9 &gt; 3  &#x21C4;</span>
+<span class="fragment">[ 2, 7, 1, 5, 3, 9 ]</span></pre></div>
+++++
+
+[.fragment]
+Scambiamo solo se la disuaglianza è `true`
+
+[.fragment]
+Il *9* viaggia fino in fondo.
+
+[.white_bg]
+== Il massimo è a posto
+
+[.array-demo]
+----
+[ 2, 7, 1, 5, 3, 9 ]
+               ↑
+----
+
+[.fragment]
+… e il *9* da qui non si muoverà più.
+
+[.fragment]
+Ora il passaggio successivo si ferma *prima*, perché *9* è già al suo posto.
+
+[.fragment]
+Servono altri *n - 1* passaggi.
+
+[.white_bg]
+== Eccolo in azione
+
+++++
+<video class="inline-video" src="assets/video/bubble_sort.mp4" autoplay loop muted playsinline width="560" height="472"></video>
+++++
+
+
+[.white_bg]
+== Ma quanto costa?
+
+Ogni passaggio confronta *tutte le coppie* adiacenti.
+
+[.fragment]
+Al passaggio *i* mancano ancora *n - i* elementi da sistemare.
+
+[.fragment]
+* (n-1) + (n-2) + … + 1 confronti
+
+[.fragment.big]
+≈ n² / 2 confronti
+
+[.fragment.big]
+O(n²)

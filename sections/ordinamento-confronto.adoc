@@ -1,0 +1,129 @@
+[.white_bg]
+== Un confronto è un bivio
+
+[.array-demo]
+----
+[ A, B, C ]
+----
+
+Il nostro algoritmo sa fare solo questo:
+
+
+[graphviz.tree.tree-sm]
+----
+digraph {
+  bgcolor="transparent"
+  node [shape=box style="rounded,filled" fillcolor="#eeeeee" color="#999999" fontname="Helvetica" fontsize=20]
+  edge [fontname="Helvetica" fontsize=16 color="#666666"]
+  q [label="A < B ?"]
+  q -> "A, B" [label="Sì"]
+  q -> "B, A"  [label="No"]
+}
+----
+
+[.small]
+Ogni confronto produce due possibilità. Niente di più.
+
+[.white_bg]
+== Ogni confronto raddoppia le possibilità
+
+[graphviz.tree]
+----
+digraph {
+  bgcolor="transparent"
+  node [shape=box style="rounded,filled" fillcolor="#eeeeee" color="#999999" fontname="Helvetica" fontsize=20]
+  edge [fontname="Helvetica" fontsize=14 color="#666666"]
+
+  c1 [label="a < b ?"]
+  c2a [label="b < c ?"]
+  c2b [label="b < c ?"]
+  c1 -> c2a [label="Sì"]
+  c1 -> c2b [label="No"]
+
+  c3a [label="a < c ?"]
+  c3b [label="a < c ?"]
+  c3c [label="a < c ?"]
+  c3d [label="a < c ?"]
+  c2a -> c3a [label="Sì"]
+  c2a -> c3b [label="No"]
+  c2b -> c3c [label="Sì"]
+  c2b -> c3d [label="No"]
+
+  l1 [shape=plaintext fontname="Courier New" fontsize=22 label="a b c"]
+  bx1 [shape=plaintext fontname="Helvetica" fontsize=14 fontstyle=italic fontcolor="#cc0000" label="impossibile"]
+  l2 [shape=plaintext fontname="Courier New" fontsize=22 label="a c b"]
+  l3 [shape=plaintext fontname="Courier New" fontsize=22 label="c a b"]
+  l4 [shape=plaintext fontname="Courier New" fontsize=22 label="b a c"]
+  l5 [shape=plaintext fontname="Courier New" fontsize=22 label="b c a"]
+  bx2 [shape=plaintext fontname="Helvetica" fontsize=14 fontstyle=italic fontcolor="#cc0000" label="impossibile"]
+  l6 [shape=plaintext fontname="Courier New" fontsize=22 label="c b a"]
+
+  c3a -> l1 [label="Sì"]
+  c3a -> bx1 [label="No"]
+  c3b -> l2 [label="Sì"]
+  c3b -> l3 [label="No"]
+  c3c -> l4 [label="Sì"]
+  c3c -> l5 [label="No"]
+  c3d -> bx2 [label="Sì"]
+  c3d -> l6 [label="No"]
+
+  {rank=same; c1}
+  {rank=same; c2a; c2b}
+  {rank=same; c3a; c3b; c3c; c3d}
+  {rank=same; l1; bx1; l2; l3; l4; l5; bx2; l6}
+}
+----
+
+[.big]
+2^k^ = 8
+
+[.fragment]
+k è il numero di confronti da eseguire (e anche l'altezza dell'albero 🌳)
+
+[.white_bg]
+== Ma quanti casi dobbiamo distinguere?
+
+Tre elementi si possono disporre in:
+
+[.array-demo]
+----
+ABC   ACB   BAC 
+BCA   CAB   CBA
+----
+
+[.big]
+3! = 6
+
+[.fragment.big]
+In generale: *n!*
+
+[.white_bg]
+== Il sorting deve avere abbastanza foglie
+
+Per distinguere *n!* ordinamenti con soli confronti servono abbastanza bivi.
+
+[.big]
+2^k^ ≥ n!
+
+[.fragment.big]
+k ≥ log₂(n!)
+
+[.fragment]
+log₂(n!) = Θ(n log n)
+
+[.fragment.big]
+k = Ω(n log n)
+
+[.white_bg]
+== Questo è il muro
+
+[quote]
+____
+Non è che gli algoritmi non siano abbastanza smart.
+
+È che, se possono solo chiedere *A < B?*, prima o poi finiscono le domande.
+____
+
+[.fragment.big]
+Cambiamo le regole.
+
