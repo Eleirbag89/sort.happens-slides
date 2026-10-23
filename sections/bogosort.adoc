@@ -1,4 +1,4 @@
-[.cover, background-video="bogo_sort.mp4", background-video-loop=loop, background-video-muted=muted]
+[.cover, background-video="/assets/video/bogo_sort.mp4", background-video-loop=loop, background-video-muted=muted]
 == !
 
 [.white_bg]

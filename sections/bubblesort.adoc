@@ -69,7 +69,7 @@ Servono altri *n - 1* passaggi.
 == Eccolo in azione
 
 ++++
-<video class="inline-video" src="assets/video/bubble_sort.mp4" autoplay loop muted playsinline width="560" height="472"></video>
+<video class="inline-video" data-src="assets/video/bubble_sort.mp4" preload="none" autoplay loop muted playsinline width="560" height="472"></video>
 ++++
 
 

@@ -79,6 +79,6 @@ Domande?
 [.column]
 --
 ++++
-<video class="inline-video" src="assets/video/sorting_visualized.mp4" autoplay loop muted playsinline width="560" height="472"></video>
+<video class="inline-video" data-src="assets/video/sorting_visualized.mp4" preload="none" autoplay loop muted playsinline width="560" height="472"></video>
 ++++
 --

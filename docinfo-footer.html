@@ -131,11 +131,48 @@
     if (!slide) return;
     var videos = slide.querySelectorAll('video.inline-video');
     for (var i = 0; i < videos.length; i++) {
+      if (!videos[i].getAttribute('src')) {
+        var source = videos[i].getAttribute('data-src');
+        if (source) {
+          videos[i].preload = 'metadata';
+          videos[i].setAttribute('src', source);
+          videos[i].load();
+        }
+      }
       tryPlay(videos[i]);
       videos[i].addEventListener('canplay', function onReady() {
         this.removeEventListener('canplay', onReady);
         tryPlay(this);
       });
+    }
+  }
+
+  function preloadInlineVideos() {
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType || ''))) return;
+
+    var preload = function() {
+      var videos = document.querySelectorAll('video.inline-video[data-src]');
+      for (var i = 0; i < videos.length; i++) {
+        if (videos[i].getAttribute('src')) continue;
+        videos[i].removeAttribute('autoplay');
+        videos[i].preload = 'metadata';
+        videos[i].setAttribute('src', videos[i].getAttribute('data-src'));
+        videos[i].load();
+      }
+    };
+
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(preload, { timeout: 5000 });
+    } else {
+      window.setTimeout(preload, 1500);
+    }
+  }
+
+  if (new URLSearchParams(window.location.search).has('print-pdf')) {
+    var printVideos = document.querySelectorAll('video.inline-video[data-src]');
+    for (var i = 0; i < printVideos.length; i++) {
+      printVideos[i].setAttribute('src', printVideos[i].getAttribute('data-src'));
     }
   }
 
@@ -361,4 +398,5 @@
 
   Reveal.on('slidechanged', playBackgroundVideo);
   window.addEventListener('load', playBackgroundVideo);
+  window.addEventListener('load', preloadInlineVideos, { once: true });
 </script>
