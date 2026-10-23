@@ -115,13 +115,15 @@ log₂(n!) = Θ(n log n)
 k = Ω(n log n)
 
 [.white_bg]
-== Questo è il muro
+== Questo è un limite matematico
 
 [quote]
 ____
-Non è che gli algoritmi non siano abbastanza smart.
+Non posso avere prestazioni migliori di Ω(n log n) confrontando gli elementi.
 
-È che, se possono solo chiedere *A < B?*, prima o poi finiscono le domande.
+Non è che gli algoritmi non siano abbastanza smart,
+
+ma se possono solo chiedere *A < B?*, c’è un limite a ciò che possono scoprire.
 ____
 
 [.fragment.big]

@@ -32,21 +32,5 @@ O(n) < Ω(n log n)
 Perché? Non abbiamo mai confrontato due elementi.
 
 [.fragment.small]
-*Funziona solo con interi positivi, e il costo efettivo dipende dalle implementazioni e potrebbe essere più lento di altri algoritmi
-
-[.white_bg]
-== legge dell'universo
-
-[.big]
-Ω(n log n)
-
-Vale **solo** per i *comparison sort*.
-
-[quote]
-____
-Cambiare modello → cambiare possibilità
-____
-
-[.notes]
-NOTE: citare velocemente Counting Sort / Radix Sort (sfruttano proprietà dei dati), senza aprirci altri capitoli.
+*Funziona solo con interi positivi, e il costo efettivo dipende dalle implementazioni e potrebbe essere più lento di altri algoritmi, causare saturazioni di memoria e morte
 
