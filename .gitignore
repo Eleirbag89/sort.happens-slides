@@ -10,3 +10,4 @@ assets/images/tree-*.svg
 assets/js/reveal.js/
 # metadata locale Freebuff (project-id), non va nel repo
 .freebuff/
+.vscode

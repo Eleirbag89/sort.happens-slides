@@ -27,6 +27,37 @@ for (const entry of ['dist', 'LICENSE', 'README.md', 'package.json']) {
 	}
 }
 
+const whiteTheme = path.join(dest, 'dist', 'theme', 'white.css');
+const fontDest = path.join(root, 'assets', 'fonts', 'reveal');
+if (fs.existsSync(whiteTheme)) {
+	let css = fs.readFileSync(whiteTheme, 'utf8');
+	let extractedFonts = 0;
+	css = css.replace(/@font-face\{[^}]*\}/g, (fontFace) => {
+		const embedded = fontFace.match(/url\(data:font\/([^;]+);base64,([^)]*)\)/);
+		if (!embedded) return fontFace;
+
+		const style = ((fontFace.match(/font-style:([^;]+)/) || [])[1] || 'normal').replace(/[;}]+$/g, '').trim();
+		const weight = ((fontFace.match(/font-weight:([^;]+)/) || [])[1] || '400').replace(/[;}]+$/g, '').trim();
+		const family = ((fontFace.match(/font-family:([^;]+)/) || [])[1] || 'font').replace(/[;}]+$/g, '').trim();
+		const familyName = family.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+		const extension = embedded[1].split('/').pop().replace(/[^a-z0-9]+/gi, '') || 'woff';
+		const fileName = `${familyName}-${style}-${weight}.${extension}`;
+		fs.mkdirSync(fontDest, { recursive: true });
+		fs.writeFileSync(path.join(fontDest, fileName), Buffer.from(embedded[2], 'base64'));
+		extractedFonts += 1;
+
+		return fontFace
+			.replace(embedded[0], `url(../../../../fonts/reveal/${fileName})`)
+			.replace(/}$/, ';font-display:swap;}');
+	});
+
+	if (extractedFonts === 0 && css.includes('data:font')) {
+		throw new Error('Font incorporati nel tema white non riconosciuti.');
+	}
+	fs.writeFileSync(whiteTheme, css);
+	console.log(`${extractedFonts} font estratti dal tema white con font-display: swap`);
+}
+
 // shim: vecchio percorso plugin/<nome>/<nome>.js -> dist/plugin/<nome>.js
 const legacyPlugins = ['notes', 'zoom', 'search', 'highlight', 'markdown', 'math'];
 for (const name of legacyPlugins) {

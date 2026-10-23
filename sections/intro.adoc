@@ -1,6 +1,6 @@
 [.white_bg]
 == Follow Along
-image:qr_code.png[background]
+image:qr-code.png[background]
 
 [.white_bg]
 == Gabriele Grillo
