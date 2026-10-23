@@ -60,7 +60,7 @@ Il *9* viaggia fino in fondo.
 … e il *9* da qui non si muoverà più.
 
 [.fragment]
-Ora il passaggio successivo si ferma *prima*, perché *9* è già al suo posto.
+Ora il passaggio successivo si ferma *prima*
 
 [.fragment]
 Servono altri *n - 1* passaggi.

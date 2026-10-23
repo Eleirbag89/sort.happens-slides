@@ -13,3 +13,29 @@ image::speaker.png[background]
 * https://github.com/Eleirbag89
 * @grimstack@asocial.grimstack.xyz
 --
+
+[.columns.is-vcentered%auto-animate]
+== Autistici/Inventati
+
+[.column.is-two-thirds%auto-animate]
+--
+* Il 26 agosto 2026 gli Stati Uniti hanno inserito il collettivo italiano Autistici/Inventati nella lista di sanzioni antiterrorismo
+* Dal 2001 il collettivo offriva gratuitamente email, hosting e altri strumenti agli attivisti
+* Costretto a sciogliersi il 18 settembre 2026
+--
+
+[.column]
+--
+image::kaos-grey.webp[size=contain]
+--
+
+== !
+
+[quote,keepitfree.ai]
+____
+Che la fine di A/I dia vita a una miriade di infrastrutture del dissenso mai immaginate prima. 
+
+Andate e moltiplicatevi, dissero le cavallette! E mentre vi moltiplicate, provate a immaginare un mondo di lotta, resistenza e autogestione come non lo avete visto mai. 
+____
+
+image::Autistici_Inventati_logo.png[size=contain]
