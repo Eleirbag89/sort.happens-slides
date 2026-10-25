@@ -2,18 +2,26 @@
 == !
 
 [.column.is-two-thirds%auto-animate]
+
 --
-* Se è stupido ma funziona... 
-** non è detto non sia stupido!
-* Le domande giuste
-** È corretto in tutti i casi previsti?
-** È efficiente in base al modello dati atteso?
-** È mantenibile sul lungo periodo?
-** È adeguato per il problema da risolvere?
+++++
+<ul>
+<li class="fragment" data-fragment-index="0"><p>Se è stupido ma funziona...</p>
+<ul><li class="fragment" data-fragment-index="1"><p>non è detto non sia stupido!</p></li></ul></li>
+<li class="fragment" data-fragment-index="2"><p>Le domande da farsi</p>
+<ul>
+<li class="fragment" data-fragment-index="3"><p>È corretto in tutti i casi previsti?</p></li>
+<li class="fragment" data-fragment-index="4"><p>È efficiente in base al modello dati atteso?</p></li>
+<li class="fragment" data-fragment-index="5"><p>È mantenibile sul lungo periodo?</p></li>
+<li class="fragment" data-fragment-index="6"><p>È adeguato per il problema da risolvere?</p></li>
+</ul></li>
+</ul>
+++++
 --
 
 [.column]
 --
+[.fragment, data-fragment-index="1"]
 image::stupid.jpg[size=contain]
 --
 
@@ -44,7 +52,7 @@ Ma se siamo ancora capaci di valutarlo
 [.bigger ]
 Il codice che funziona
 
-[.fragment.big]
+[.fragment.big, data-fragment-index="42"]
 non 
 
 [.bigger]
@@ -55,7 +63,7 @@ non
 [.bigger]
 Codice che sembra assurdo 
 
-[.fragment.big]
+[.fragment.big, data-fragment-index="42"]
 non
 
 [.bigger]

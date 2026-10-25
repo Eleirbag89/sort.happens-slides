@@ -26,9 +26,9 @@ include::bogosort.adoc[]
 
 include::sleepsort.adoc[]
 
-include::stalinsort.adoc[]
-
 include::thanossort.adoc[]
+
+include::stalinsort.adoc[]
 
 include::quantum-bogosort.adoc[]
 
