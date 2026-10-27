@@ -56,7 +56,7 @@ Il codice che funziona
 non 
 
 [.bigger]
-è necessariamente il codice giusto.
+è necessariamente il codice giusto
 
 '''
 
