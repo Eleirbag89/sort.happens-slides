@@ -22,10 +22,10 @@ digraph {
 ----
 
 [.small]
-Ogni confronto produce due possibilità. Niente di più.
+Ogni confronto produce due possibilità
 
 [.white_bg]
-== Ogni confronto raddoppia le possibilità
+== !
 
 [graphviz.tree]
 ----
@@ -116,15 +116,14 @@ k = Ω(n log n)
 
 [.white_bg]
 == Questo è un limite matematico
+[.fragment]
+Non si può fare meglio di Ω(n log n) confrontando gli elementi.
 
-[quote]
-____
-Non posso avere prestazioni migliori di Ω(n log n) confrontando gli elementi.
+[.fragment]
+non è che gli algoritmi non siano abbastanza smart
 
-Non è che gli algoritmi non siano abbastanza smart,
-
-ma se possono solo chiedere *A < B?*, c’è un limite a ciò che possono scoprire.
-____
+[.fragment]
+ma se chiedono solo *A < B?* c’è un limite a ciò che possono scoprire
 
 [.fragment.big]
 Cambiamo le regole.

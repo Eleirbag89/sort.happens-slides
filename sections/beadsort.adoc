@@ -22,15 +22,19 @@ Usiamo la gravità
 == Quanto costa?
 
 [%step]
-* Spaziale: *O(r · m)* — la griglia è *r × m*, con *r · m = n*: *r* numero di elementi, *m* numero di palline massimo di un numero
-* Temporale: *O(n)* — una passata per trasferire le palline*, una per contare
+* Spaziale: *O(n)* -  *n = r × m*
+** *r* numero di elementi 
+** *m* numero di palline massimo
+* Temporale: *O(n)* - una passata per trasferire le palline, una per contare
 
 [.fragment.big]
-O(n) < Ω(n log n)
+O(n)* < Ω(n log n)
 
 [.fragment]
 Perché? Non abbiamo mai confrontato due elementi.
 
 [.fragment.small]
-*Funziona solo con interi positivi, e il costo efettivo dipende dalle implementazioni e potrebbe essere più lento di altri algoritmi, causare saturazioni di memoria e morte
+*_Funziona solo con interi positivi e massimo noto. L’efficacia può variare in base all’implementazione. +
+Può causare rallentamenti, consumo eccessivo di memoria, saturazione delle risorse e, nei casi più gravi, morte del processo. +
+Consultare un informatico in caso di persistenza dei sintomi
 
