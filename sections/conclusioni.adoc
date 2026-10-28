@@ -1,3 +1,17 @@
+[.white_bg]
+== Non potevo non andare a parare sulla AI
+
+[quote, Qualunque programmatore]
+____
+Lo ha scritto {CODING_AGENT_DEL_MOMENTO}. 
+
+Funziona.
+____
+
+[.fragment]
+[.big]
+...e quindi?
+
 [.columns.is-vcentered%auto-animate]
 == !
 
@@ -6,9 +20,9 @@
 --
 ++++
 <ul>
-<li class="fragment" data-fragment-index="0"><p>Se è stupido ma funziona...</p>
+<li ><p>Se è stupido ma funziona...</p>
 <ul><li class="fragment" data-fragment-index="1"><p>non è detto non sia stupido!</p></li></ul></li>
-<li class="fragment" data-fragment-index="2"><p>Le domande da farsi</p>
+<li class="fragment" data-fragment-index="2"><p>Le domande da porci 🐷</p>
 <ul>
 <li class="fragment" data-fragment-index="3"><p>È corretto in tutti i casi previsti?</p></li>
 <li class="fragment" data-fragment-index="4"><p>È efficiente in base al modello dati atteso?</p></li>
@@ -28,23 +42,15 @@ image::stupid.jpg[size=contain]
 [.notes]
 NOTE: Queste sono quattro domande diverse. Un programma può produrre il risultato atteso, ma essere lento, difficile da modificare o inadatto al problema. Non confondere la correttezza con la qualità complessiva della soluzione.
 
-[.white_bg]
-== E l'AI?
-
-[quote, Qualunque programmatore]
-____
-"Lo ha scritto {CODING AGENT DEL MOMENTO}. Funziona."
-____
-
-[.fragment]
-[.big]
-...e quindi?
 
 == !
 La domanda non è se l'AI sia capace di scrivere codice
 
-[.fragment]
-Ma se siamo ancora capaci di valutarlo
+[.fragment.small]
+🤖 lo sa fare benissimo 🤖
+
+[.fragment.big]
+Stiamo coltivando le competenze giuste per valutarlo?
 
 [.white_bg]
 == Take away
@@ -52,7 +58,7 @@ Ma se siamo ancora capaci di valutarlo
 [.bigger ]
 Il codice che funziona
 
-[.fragment.big, data-fragment-index="42"]
+[.fragment.big]
 non 
 
 [.bigger]
@@ -63,11 +69,11 @@ non
 [.bigger]
 Codice che sembra assurdo 
 
-[.fragment.big, data-fragment-index="42"]
+[.fragment.big]
 non
 
 [.bigger]
-è necessariamente codice sbagliato
+è necessariamente sbagliato
 
 
 [.white_bg]

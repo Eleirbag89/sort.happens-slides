@@ -34,24 +34,36 @@ for i = 1 to n:
  i     j
 ----
 
+[.fragment]
+----
+[4 1 3 2] 🤔
+----
+
 == i=2
 [.fragment]
 ----
-[4 1 3 2] 4 < 1? 🔄
+[4 1 3 2] 1 < 4? 🔄
  ↑ ↑ 
  j i
 ----
+
 [.fragment]
 ----
 [1 4 3 2] 4 < 3? 🟰
    ↑ ↑
    i j
 ----
+
 [.fragment]
 ----
 [1 4 3 2] 4 < 2? 🟰
    ↑   ↑
    i   j
+----
+
+[.fragment]
+----
+[1 4 3 2] 🤔🤔
 ----
 
 == i=3
@@ -76,6 +88,11 @@ for i = 1 to n:
      i j
 ----
 
+[.fragment]
+----
+[1 3 4 2] 🤔🤔🤔
+----
+
 == i=4
 
 [.fragment]
@@ -98,9 +115,10 @@ for i = 1 to n:
      ↑ ↑
      j i
 ----
+
 [.fragment]
 ----
-[1 2 3 4] 🤯
+[1 2 3 4] 🤯🤯🤯
 ----
 
 [.cover]
@@ -115,11 +133,13 @@ _Il prof Stanley P. Y. Fung lo ha creato introducendo errori nel bubblesort_
 == !
 [quote,Stanley P. Y. Fung]
 ____
-Non c'è nulla di buono in questo algoritmo. È lento Θ(n²) nel caso peggiore, medio e migliore. 
+Non c'è nulla di buono in questo algoritmo.
 
-Confronta inutilmente tutte le coppie di posizioni, due volte e la sua correttezza non è del tutto ovvia. Non è stabile, non può ordinare input che arrivano online, e non trae beneficio da input parzialmente ordinati
+Impiega Θ(n²) nel caso peggiore, medio e migliore. 
 
-Il suo unico fascino può essere la sua semplicità, in termini di righe di codice e la "simmetria" dei due cicli.
+Confronta inutilmente tutte le coppie di posizioni, due volte, e la sua correttezza non è del tutto ovvia.
+
+Non è stabile, non può ordinare input che arrivano online, e non trae beneficio da input parzialmente ordinati.
 ____
 
 == !
