@@ -21,9 +21,13 @@ const initCustomControls = function(Reveal){
 	var collapseIcon = config.collapseIcon || '<i class="fa fa-chevron-down"></i>';
 	var expandIcon = config.expandIcon || '<i class="fa fa-chevron-up"></i>';
 	var tooltip = config.tooltip || 'Show/hide controls';
+	var mobileControls = window.matchMedia('(max-width: 499px), (pointer: coarse)');
 
 	var div = document.createElement( 'div' );
 	div.id = 'customcontrols';
+	if ( mobileControls.matches ) {
+		div.classList.add('collapsed');
+	}
 
 	var toggleButton = document.createElement( 'button' );
 	toggleButton.title = tooltip;
@@ -56,13 +60,14 @@ const initCustomControls = function(Reveal){
 
 	document.querySelector(".reveal").appendChild( div );
 
-	document.addEventListener( 'resize', function( event ) {
-		// expand controls to make sure they are visible
-		var div = document.querySelector("div#customcontrols.collapsed");
-		if ( div ) {
-			div.classList.remove('collapsed');
-		}
-	} );
+	var updateControlsForViewport = function(event) {
+		div.classList.toggle('collapsed', event.matches);
+	};
+	if ( mobileControls.addEventListener ) {
+		mobileControls.addEventListener('change', updateControlsForViewport);
+	} else {
+		mobileControls.addListener(updateControlsForViewport);
+	}
 
 	return this;
 

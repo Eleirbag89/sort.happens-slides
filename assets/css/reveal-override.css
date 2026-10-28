@@ -576,3 +576,12 @@ footer:last-of-type#title-footer
 	   doppia animazione se i dati dovessero muoversi. */
 	transition: transform 0.30s ease-in;
 }
+
+@media (max-width: 600px)
+{
+	.reveal .slides .beads
+	{
+		--cell: 128px;
+		--dot: 55px;
+	}
+}
