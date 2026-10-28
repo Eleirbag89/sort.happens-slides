@@ -49,7 +49,7 @@
 	display: none;
 } 
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 500px) and (pointer: fine) {
 	#customcontrols > button {
 		display: none;
 	}
