@@ -14,7 +14,7 @@ for i = 1 to n - 1:
 ----
 
 [.fragment]
-Prendi due elementi vicini. Se sono nel ordine sbagliato, scambiali.
+Prendi due elementi vicini. Se sono nell'ordine sbagliato, scambiali.
 
 [.fragment]
 Ripeti tutto

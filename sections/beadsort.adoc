@@ -22,7 +22,7 @@ Usiamo la gravità
 == Quanto costa?
 
 [%step]
-* Spaziale: *O(n)* -  *n = r × m*
+* Spaziale: *O(r × m)*
 ** *r* numero di elementi 
 ** *m* numero di palline massimo
 * Temporale: *O(n)* - una passata per trasferire le palline, una per contare
@@ -36,5 +36,5 @@ Perché? Non abbiamo mai confrontato due elementi.
 [.fragment.small]
 *_Funziona solo con interi positivi e massimo noto. L’efficacia può variare in base all’implementazione. +
 Può causare rallentamenti, consumo eccessivo di memoria, saturazione delle risorse e, nei casi più gravi, morte del processo. +
-Consultare un informatico in caso di persistenza dei sintomi
+Consultare un informatico in caso di persistenza dei sintomi_
 

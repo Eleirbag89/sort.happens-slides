@@ -117,13 +117,13 @@ k = Ω(n log n)
 [.white_bg]
 == Questo è un limite matematico
 [.fragment]
-Non si può fare meglio di Ω(n log n) confrontando gli elementi.
+Non si può fare meglio di Ω(n log n) confrontando gli elementi
 
 [.fragment]
-non è che gli algoritmi non siano abbastanza smart
+Non è che gli algoritmi non siano abbastanza smart...
 
 [.fragment]
-ma se chiedono solo *A < B?* c’è un limite a ciò che possono scoprire
+Ma se chiedono solo *A < B?* c’è un limite a ciò che possono scoprire
 
 [.fragment.big]
 Cambiamo le regole.
