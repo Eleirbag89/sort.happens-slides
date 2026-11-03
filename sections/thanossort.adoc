@@ -36,4 +36,8 @@ ____
 ____
 
 [.fragment]
-Quando un algoritmo risolve davvero il problema?
+Abbiamo ordinato l'array?
+
+[.fragment]
+Tecnicamente… abbiamo ottenuto un array ordinato.
+
