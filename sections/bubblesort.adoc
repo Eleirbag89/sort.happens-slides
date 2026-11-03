@@ -41,8 +41,6 @@ Volte
 <span class="fragment">[ 2, 7, 1, 5, 3, 9 ]</span></pre></div>
 ++++
 
-[.fragment]
-Scambiamo solo se la disuaglianza è `true`
 
 [.white_bg]
 == Il massimo è al suo posto

@@ -10,7 +10,7 @@ ____
 
 [.fragment]
 [.big]
-...e quindi?
+...funziona?
 
 [.columns.is-vcentered%auto-animate]
 == !
@@ -74,13 +74,6 @@ non
 
 [.bigger]
 è necessariamente sbagliato
-
-
-[.white_bg]
-== Sort happens
-
-[.fragment.small]
-Sometimes…
 
 [.columns.is-vcentered%auto-animate]
 == Grazie
