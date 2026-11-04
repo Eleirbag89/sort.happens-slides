@@ -9,7 +9,7 @@ image::obama_bubblesort.webp[background]
 ----
 for i = 1 to n - 1:
     for j = 1 to (n - i):
-        if a[j] > a[j + 1]:
+        if A[j] > A[j + 1]:
             swap A[j] and A[j+1]
 ----
 

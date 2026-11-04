@@ -1,14 +1,28 @@
 
 [.white_bg]
-== Secondo voi funziona?
+[.columns.is-vcentered%auto-animate]
+== !
 
+[.column]
 
+.Secondo voi funziona?
 [source,python]
 ----
 for i = 1 to n:
     for j = 1 to n:
         if A[i] < A[j]:
             swap A[i] and A[j]
+----
+
+[.column]
+
+.Bubblesort
+[source,python]
+----
+for i = 1 to n - 1:
+    for j = 1 to (n - i):
+        if A[j] > A[j + 1]:
+            swap A[j] and A[j+1]
 ----
 
 [.white_bg]
