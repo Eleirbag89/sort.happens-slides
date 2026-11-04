@@ -3,8 +3,10 @@
 image::slotherhouse.png[background]
 
 [.white_bg]
+[.columns.is-vcentered%auto-animate]
 == Slow Sort
 
+[.column]
 [source,python]
 ----
 def slow_sort(A, i, j):
@@ -22,6 +24,7 @@ def slow_sort(A, i, j):
     slow_sort(A, i, j-1)             # <4>
 ----
 
+[.column]
 <1> Caso base: zero o un elemento sono già ordinati.
 <2> Divide la porzione in due metà.
 <3> Porta il massimo in fondo alla porzione.
