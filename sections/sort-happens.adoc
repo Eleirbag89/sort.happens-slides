@@ -16,6 +16,8 @@ Non chiedetelo alla mia compagna 🤫
 Piccola domanda al pubblico: come lo fareste?
 --
 
+include::slowsort.adoc[]
+
 include::bubblesort.adoc[]
 
 include::ordinamento-confronto.adoc[]

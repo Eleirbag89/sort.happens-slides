@@ -452,6 +452,23 @@ footer:last-of-type#title-footer
 	max-height: 34vh;
 }
 
+.hljs-ln-n {
+  font-size: 0.6em;
+  opacity: 0.6;
+}
+
+/* Callout list (colist arabic) - numeri e testo più piccoli */
+.colist.arabic {
+  font-size: 0.75em;
+}
+.colist.arabic td:first-child {
+  width: 1.5em;
+}
+.colist.arabic b {
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
 /* Video inline dentro una slide (es. animazione del bubblesort): il
    sorgente e' 280x236, quindi lo si raddoppia via attributi width/height e
    si toglie il bordo che il tema mette sugli elementi media. */

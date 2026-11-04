@@ -1,0 +1,63 @@
+[.cover]
+== !
+image::slotherhouse.png[background]
+
+[.white_bg]
+== Slow Sort
+
+[source,python]
+----
+def slow_sort(A, i, j):
+    if i >= j:                       # <1>
+        return
+
+    m = (i + j) // 2                 # <2>
+
+    slow_sort(A, i, m)
+    slow_sort(A, m+1, j)
+
+    if A[m] > A[j]:                  # <3>
+        A[m], A[j] = A[j], A[m]
+
+    slow_sort(A, i, j-1)             # <4>
+----
+
+<1> Caso base: zero o un elemento sono già ordinati.
+<2> Divide la porzione in due metà.
+<3> Porta il massimo in fondo alla porzione.
+<4> Ripete l'ordinamento escludendo l'ultimo elemento.
+
+[.white_bg]
+== Ordiniamo
+
+[.array-trace]
+++++
+<div class="array-trace"><pre class="trace"><span>[ 7, 2, 9, 1, 5, 3 ] </span>
+<span class="fragment">Divide in due metà e le ordina ricorsivamente</span>
+<span class="fragment">[ 7, 2, 9 | 1, 5, 3 ] </span>
+<span class="fragment">[ 2, 7, 9 | 1, 3, 5 ]  9 &gt; 5 &#x21C4;</span>
+<span class="fragment">[ 2, 7, 1 | 3, 5 | <b>9</b> ]</span></pre></div>
+++++
+
+[.fragment]
+L'elemento massimo è al suo posto.
+
+[.fragment]
+Resta solo da ordinare nuovamente i primi n-1 elementi 😴
+
+[.white_bg]
+== Quanto costa?
+
+[.fragment.big]
+--
+[stem]
+++++
+T(n) = 2^{\Theta(\log^2 n)}
+++++
+
+Superpolinomiale!
+--
+
+[.fragment]
+Persino peggio di...
+

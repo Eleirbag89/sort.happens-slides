@@ -15,6 +15,8 @@
 :revealjs_slideNumber: true
 :revealjs_pdfSeparateFragments: false
 :revealjs_controlsBackArrows: faded
+// Math: abilita stem:[...] e [stem] (renderizzati da MathJax)
+:stem: latexmath
 // Highliter
 :source-highlighter: highlightjs
 //:highlightjs-languages: js
