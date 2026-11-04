@@ -1,66 +1,73 @@
-= Asciidoctor reveal.js template 
-:author: @martsec
+= Sort.happens
+:author: Gabriele Grillo
 
-After building 12 slide decks of too many slides each one, 
-I wanted to share what I've learnt and loved of using asciidoctor 
-to build them. 
+Slides for the talk *"Sort.happens: Quando Bubble Sort sembra una buona idea"*, presented at DevFest Catania 2026.
 
-In the https://asciidoc-slides.8vi.cat[🖥️ demo 💻] you'll find tips, tricks and a slide deck *with a logo* that you can reuse!
+Live deck: https://sort-happens.grimstack.xyz
 
-I assume you are a bit familiar with asciidoctor or markdown, 
-and if not, that you are not afraid of reading documentation
-and testing things out. 
+The deck is written in AsciiDoc and rendered to HTML with https://asciidoctor.org[Asciidoctor] and https://revealjs.com[reveal.js]. Slide content is in Italian; this README and the tooling are in English.
 
-== 👩‍💻 Why writing your presentations as code
+== Requirements
 
-* Versioning in visual editors sucks.
-* You are used to version your code already.
-* You prefer to not spend ages animating and aligning each element.
-* Your animated slides now don't depend of people buying licenses to Microsoft.
+* Node.js 24 (see `.nvmrc`, `nvm use` picks it up)
+* npm
+* Network access for builds: https://kroki.io[Kroki] diagrams (`[graphviz...]` blocks) are fetched while compiling
 
-This might not be for you if you are not comfortable with a plain text editor and prefer the nicer(?) user interface of LibreOffice or Microsoft Office.
+== Getting started
 
-== 🔨 Installing
+[source,bash]
+----
+npm ci                # install dependencies
+npm run dev           # live-reload server on http://127.0.0.1:8123/presentation.html
+PORT=9000 npm run dev # use a different port
+----
 
-. Clone this git repository
-. Install asiidoctor reveal-js https://github.com/asciidoctor/asciidoctor-reveal.js/releases/tag/v5.0.0-rc.1[v5.0.0-rc.1]
+`npm run dev` is the normal way to work: it rebuilds the deck whenever an `.adoc` file, the CSS, `docinfo-footer.html` or a plugin changes, and reloads the browser. The live-reload client is only injected into the HTTP response, it is never written to `presentation.html`.
 
-TIP: You can download the executable directly from the "Assets" section
+Live reload only exists with the dev server: opening `presentation.html` from `file://` gives you a static page.
 
-== ✍🏾 Writing slides
+== Building
 
-You are going to mostly write text with a bit of flavored extras. 
-It helps focusing on what you want to tell instead of on formatting. 
+[source,bash]
+----
+npm run build
+----
 
-Best practices:
+The build runs `scripts/sync-reveal.js` first (`prebuild`), which copies reveal.js from `node_modules` into `assets/js/reveal.js/` and extracts the theme fonts, then compiles `presentation.adoc` into `presentation.html`.
 
-* Split your slides in different sections and put those in separated files.
-* Have your code in a separate file and use includes.
-* Use images and diagrams.
-* Keep the text short.
-* Use lists and icons.
-* Upload your "code" to a git service (e.g. gitlab, github) as you do with normal code.
+`assets/js/reveal.js/` and `assets/fonts/reveal/` are generated: do not edit them by hand and do not commit them. Custom plugins go in `assets/js/reveal.js-plugins/`, custom styles in `assets/css/reveal-override.css`.
 
-![code image](./images/code.gif)
+== PDF export
 
+Open `presentation.html?print-pdf` in a browser and print to PDF. The print stylesheet lives in `assets/css/reveal-override.css`. See the https://revealjs.com/pdf-export/[reveal.js PDF export documentation] for details.
 
-== 🎁🌐 Compiling to HTML page
+== Deployment
 
-`./asciidoctor-revealjs presentation.adoc`
+* Pushes to `main` build the deck and publish it to GitHub Pages (`.github/workflows/static.yml`).
+* Tags matching `v*` build the deck and attach a zipped `dist/` to a GitHub release (`.github/workflows/release.yml`).
 
-Then, open it with your browser and that's it! You can also serve this in a github page for everyone to enjoy.
+== Repository layout
 
+[source]
+----
+presentation.adoc               # root document: attributes and include order
+sections/*.adoc                 # one file per topic, concatenated via includes
+assets/css/reveal-override.css  # custom styles and slide classes
+assets/images|video|fonts       # media
+assets/js/reveal.js-plugins     # reveal.js plugins kept in the repo
+docinfo-footer.html             # footer and support scripts (video, print, UI)
+scripts/dev.js                  # dev server + file watcher
+scripts/sync-reveal.js          # copies reveal.js from node_modules before the build
+----
 
-== 🖨️ Obtaining a PDF and printing
+Slide order comes from the `include`s: `presentation.adoc` includes `sections/intro.adoc` and `sections/sort-happens.adoc`, and the latter includes the remaining sections at its end. To add a section, create `sections/name.adoc` and add the `include` at the right point of that chain.
 
-1. Compile to HTML
-2. Use Microsoft edge to go to the print version `file:///.../s1.html?print-pdf`. It's the browser that's respecting more the format. Chrome should also be enough but I've been having some challenges.
-3. Print using "save as PDF". File will be big since it will include all the images in their high definition magnificency. 
-4. Upload the file to https://smallpdf.com/compress-pdf[small PDF] or a similar service to compress it down. The free version is enough
+== Writing slides
 
-For more information check https://revealjs.com/pdf-export/[Reveal.js PDF export] documentation.
+A slide is a level-2 title (`==`): one concept, short text, short lists. Section openers use `[.cover]` with a background image, regular text slides start with `[.white_bg]`, media live in `assets/`.
 
+Authoring conventions, mobile and speaker-view constraints, and the checks to run before committing are in link:AGENTS.md[AGENTS.md].
 
-== ❌ Not supported
+== Credits
 
-Asciidoctor reveal.js does not support compiling plantUML diagrams, like we are used to with the normal version. If you know how to do it, please contribute!
+Bootstrapped from the https://github.com/asciidoctor/asciidoctor-reveal.js[AsciiDoc reveal.js template] by @martsec.
