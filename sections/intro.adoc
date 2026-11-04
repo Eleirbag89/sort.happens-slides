@@ -29,7 +29,7 @@ image::speaker.png[background]
 image::kaos-grey.webp[size=contain]
 --
 
-== !
+== +Kaos
 
 [quote,keepitfree.ai]
 ____
