@@ -74,7 +74,7 @@ To update reveal.js: change the dependency in `package.json`, run `npm install`,
 ## Style and git
 
 - Respect the style of the file you touch: Node scripts use tabs, AsciiDoc is plain text, CSS uses 4 spaces (with existing exceptions).
-- The repo has **mixed line endings** (many CRLF files, some LF). Do not do mass conversions: keep the line endings of the file you are working on.
+- All text files use **LF**, enforced by `.gitattributes` (`* text=auto eol=lf`) and `.editorconfig`: do not switch a file to CRLF, it would be normalized on the next commit anyway.
 - Commit messages use Conventional Commits, short and lowercase: `feat:`, `fix:`, `chore:`, `docs:`, `style:`, `refactor:`. Examples: `fix: add nvm use`, `feat: add slide for a/i`.
 - One commit = one coherent change. Do not include build output or unrelated files.
 - Do not push, force-push, tag or release unless explicitly asked.
