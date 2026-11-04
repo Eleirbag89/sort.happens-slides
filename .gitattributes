@@ -1,0 +1,30 @@
+# Testo normalizzato a LF nel repository e nel working tree, su ogni OS.
+# Vedi AGENTS.md ("Style and git") e README.adoc.
+* text=auto eol=lf
+
+*.adoc   text eol=lf
+*.md     text eol=lf
+*.html   text eol=lf
+*.css    text eol=lf
+*.js     text eol=lf
+*.json   text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.svg    text eol=lf
+
+# Binari: nessuna conversione, mai.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.gif   binary
+*.mp4   binary
+*.webm  binary
+*.woff  binary
+*.woff2 binary
+*.eot   binary
+*.ttf   binary
+*.otf   binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
