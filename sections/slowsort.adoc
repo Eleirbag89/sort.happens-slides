@@ -49,7 +49,7 @@ L'elemento massimo è al suo posto.
 Resta solo da ordinare nuovamente i primi n-1 elementi 😴
 
 [.white_bg]
-== Quanto costa?
+== Quanto tempo impiega?
 
 [.fragment.big]
 --

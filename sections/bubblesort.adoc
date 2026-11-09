@@ -1,6 +1,6 @@
 [.cover]
-== !
-image::obama_bubblesort.webp[background]
+== i think the bubblesort wold be the wrong way to go
+image::obama_bubblesort.jpg[background]
 
 [.white_bg]
 == Bubblesort
@@ -69,7 +69,7 @@ Servono altri *n - 1* passaggi.
 
 
 [.white_bg]
-== Ma quanto costa?
+== Quanto è lento?
 
 Ogni passaggio confronta *tutte le coppie* adiacenti
 
@@ -80,7 +80,7 @@ Al passaggio *i* mancano ancora *n - i* elementi da sistemare
 * (n-1) + (n-2) + … + 1 confronti
 
 [.fragment.big]
-≈ n² / 2 confronti
-
-[.fragment.big]
-O(n²)
+[stem]
+++++
+≈ \frac{n(n-1)}{2} ≈ O(n²)
+++++
