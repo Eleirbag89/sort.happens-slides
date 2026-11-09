@@ -81,6 +81,8 @@ non
 [.column.is-two-thirds%auto-animate]
 --
 Domande?
+
+image:qr-code.png[width=384]
 --
 
 [.column]

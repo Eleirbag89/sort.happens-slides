@@ -39,7 +39,7 @@ Everything local lives in `scripts/dev.js` and `scripts/sync-reveal.js`:
 - The speaker view is the built-in reveal.js one: it opens with **S** (or from the menu) in a separate window. The `notes` plugin is loaded from `assets/js/reveal.js/plugin/notes/notes.js` (a shim created by `sync-reveal.js`).
 - In the speaker view, slides are loaded in two iframes with `?receiver` in the query string. For this reason `docinfo-footer.html` registers the menu and custom controls **only** when neither `?receiver` nor `?print-pdf` is present: otherwise their UI ends up on top of the Current/Upcoming panes. A new global plugin must be guarded the same way.
 - The speaker window is `about:blank`: it cannot be reached via CSS from the main page, so these cases must be handled in JS (or excluded upstream), not with media queries.
-- To test it you need the page served (`npm run dev` or GitHub Pages) and the browser popup permission. Check that notes appear, that videos start and that menu/controls are not duplicated in the speaker window.
+- It also works when `presentation.html` is opened directly from disk: reveal.js 6 special-cases `file://` in the notes plugin (the upstream docs still say a local server is required, and some browsers may fail the origin check). The served version (`npm run dev` or GitHub Pages) stays the reference, and the browser popup permission is always needed. Check that notes appear, that videos start and that menu/controls are not duplicated in the speaker window.
 
 ## Authoring conventions
 
