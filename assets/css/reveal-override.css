@@ -7,8 +7,10 @@
 
 
 @media print {
+  /* 16:9 deck: portrait here gives rotated/clipped pages when printing without ?print-pdf.
+     With ?print-pdf reveal.js injects its own @page size, which wins over this rule. */
   @page {
-    size: portrait;
+    size: landscape;
   }
   .reveal-viewport {
     background-image: none;

@@ -1,11 +1,10 @@
 [.cover]
-== !
+== Stalin Sort
 image::stalin-diary.jpg[background]
 
 [transition="fade-in none-out", .white_bg]
 == Stalin Sort
 
-[.fragment]
 _Se non sei ordinato, in Siberia!_
 
 [.fragment]

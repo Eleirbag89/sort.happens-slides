@@ -1,5 +1,5 @@
 [.cover]
-== !
+== Thanos Sort
 image::thanos.webp[background]
 
 [transition="fade-in none-out", .white_bg]

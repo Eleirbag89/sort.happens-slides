@@ -1,10 +1,9 @@
 [.cover, background-video="../video/bogo_sort.mp4", background-video-loop=loop, background-video-muted=muted]
-== !
+== BogoSort
 
 [.white_bg]
 == BogoSort
 
-[.fragment]
 E se provassimo a caso?
 
 [.fragment]

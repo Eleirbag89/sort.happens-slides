@@ -1,6 +1,6 @@
 [.cover]
-== !
-image::slotherhouse.png[background]
+== Slow sort
+image::slotherhouse-poster.jpg[background]
 
 [.white_bg]
 [.columns.is-vcentered%auto-animate]
@@ -35,18 +35,17 @@ def slow_sort(A, i, j):
 
 [.array-trace]
 ++++
-<div class="array-trace"><pre class="trace"><span>[ 7, 2, 9, 1, 5, 3 ] </span>
+<div class="array-trace"><pre class="trace"><span>[ 7, 2, 9, 1, 5, 3 ]</span>
 <span class="fragment">Divide in due metà e le ordina ricorsivamente</span>
-<span class="fragment">[ 7, 2, 9 | 1, 5, 3 ] </span>
-<span class="fragment">[ 2, 7, 9 | 1, 3, 5 ]  9 &gt; 5 &#x21C4;</span>
-<span class="fragment">[ 2, 7, 1 | 3, 5 | <b>9</b> ]</span></pre></div>
+<span class="fragment">[ 7, 2, 9 | 1, 5, 3 ]</span>
+<span class="fragment">[ 2, 7, 9 | 1, 3, 5 ]</span>
+<span class="fragment">Confronta gli ultimi elementi: 9 &gt; 5</span>
+<span class="fragment">[ 2, 7, 5 | 1, 3 | <b>9</b> ]</span></pre></div>
 ++++
 
 [.fragment]
-L'elemento massimo è al suo posto.
+Resta da ordinare ricorsivamente i primi n-1 elementi 😴
 
-[.fragment]
-Resta solo da ordinare nuovamente i primi n-1 elementi 😴
 
 [.white_bg]
 == Quanto tempo impiega?
@@ -57,10 +56,15 @@ Resta solo da ordinare nuovamente i primi n-1 elementi 😴
 ++++
 T(n) = 2^{\Theta(\log^2 n)}
 ++++
-
-Superpolinomiale!
 --
+
+[.fragment.big]
+Superpolinomiale!
 
 [.fragment]
 Persino peggio di...
+
+[.notes]
+NOTE: Chiedere chi conosce e spiegare la notazione complessità asintotica
+
 

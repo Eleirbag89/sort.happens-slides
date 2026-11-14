@@ -13,7 +13,11 @@ Non chiedetelo alla mia compagna 🤫
 
 [.notes]
 --
-Piccola domanda al pubblico: come lo fareste?
+Stroria informatica, IBM censimento del 1890.
+- Herman Hollerith inventò una macchina elettromeccanica per elaborare schede perforate.
+- Ogni scheda rappresentava informazioni relative a una persona.
+- Le perforazioni codificavano caratteristiche demografiche.
+- Le macchine ordinavano e contavano le schede in base alle caratteristiche registrate.
 --
 
 include::slowsort.adoc[]

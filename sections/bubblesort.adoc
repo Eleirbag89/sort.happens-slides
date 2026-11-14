@@ -79,8 +79,8 @@ Al passaggio *i* mancano ancora *n - i* elementi da sistemare
 [.fragment]
 * (n-1) + (n-2) + … + 1 confronti
 
-[.fragment.big]
-[stem]
+[.big]
 ++++
-≈ \frac{n(n-1)}{2} ≈ O(n²)
+<span class="fragment stem big">\( \frac{n(n-1)}{2} \)</span>
+<span class="fragment stem big">\( \approx O(n^2) \)</span>
 ++++

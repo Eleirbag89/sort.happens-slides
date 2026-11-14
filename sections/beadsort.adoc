@@ -1,5 +1,12 @@
+[.cover]
+== Bead Sort
+image::bead_sort.jpg[background]
+
 [.white_bg]
 == Bead Sort
+
+[.fragment]
+Non confrontiamo i numeri
 
 [.fragment]
 ++++
@@ -10,9 +17,6 @@
 <span class="fragment" data-bead-step="4"></span>
 </div>
 ++++
-
-[.fragment]
-Non confrontiamo i numeri
 
 [.fragment.big]
 Usiamo la gravità
@@ -28,7 +32,7 @@ Usiamo la gravità
 * Temporale: *O(n)* - una passata per trasferire le palline, una per contare
 
 [.fragment.big]
-O(n)* < Ω(n log n)
+O(n) < Ω(n log n) (*)
 
 [.fragment]
 Perché? Non abbiamo mai confrontato due elementi.
@@ -36,5 +40,5 @@ Perché? Non abbiamo mai confrontato due elementi.
 [.fragment.small]
 *_Funziona solo con interi positivi e massimo noto. L’efficacia può variare in base all’implementazione. +
 Può causare rallentamenti, consumo eccessivo di memoria, saturazione delle risorse e, nei casi più gravi, morte del processo. +
-Consultare un informatico in caso di persistenza dei sintomi_
+In caso di persistenza dei sintomi consultare un informatico_
 

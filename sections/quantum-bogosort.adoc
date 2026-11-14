@@ -1,5 +1,5 @@
 [.cover, background-video="quantum_bogo_sort.mp4", background-video-loop=loop, background-video-muted=muted]
-== !
+== Quantum BogoSort
 
 [.white_bg]
 == Quantum BogoSort

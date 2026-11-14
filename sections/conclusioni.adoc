@@ -28,6 +28,7 @@ ____
 <li class="fragment" data-fragment-index="4"><p>È efficiente in base al modello dati atteso?</p></li>
 <li class="fragment" data-fragment-index="5"><p>È mantenibile sul lungo periodo?</p></li>
 <li class="fragment" data-fragment-index="6"><p>È adeguato per il problema da risolvere?</p></li>
+<li class="fragment" data-fragment-index="7"><p>È presente una batteria di test adeguata?</p></li>
 </ul></li>
 </ul>
 ++++
@@ -39,10 +40,6 @@ ____
 image::stupid.jpg[size=contain]
 --
 
-[.notes]
-NOTE: Queste sono quattro domande diverse. Un programma può produrre il risultato atteso, ma essere lento, difficile da modificare o inadatto al problema. Non confondere la correttezza con la qualità complessiva della soluzione.
-
-
 == !
 La domanda non è se l'AI sia capace di scrivere codice
 
@@ -50,7 +47,11 @@ La domanda non è se l'AI sia capace di scrivere codice
 🤖 lo sa fare benissimo 🤖
 
 [.fragment.big]
-Stiamo coltivando le competenze giuste per valutarlo?
+Quali sono le competenze giuste per valutarlo?
+
+[.notes]
+NOTE: Domanda aperta per il pubblico
+
 
 [.white_bg]
 == Take away
