@@ -30,7 +30,7 @@ I numeri *si svegliano* nell'ordine corretto
 == Una sveglia costosa
 
 [.fragment]
-`setTimeout` viene gestito dalla runtime del browser, ipotiziamo crei una coda con priorità.
+`setTimeout` viene gestito dalla runtime del browser, ipotizziamo crei una coda con priorità.
 
 [.fragment.big]
 O(n log n + max(input))
